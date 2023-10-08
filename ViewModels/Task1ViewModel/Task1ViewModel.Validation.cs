@@ -23,7 +23,7 @@ namespace OOP_5.ViewModels
                         break;
 
                     case "Number2":
-                        if (!double.TryParse(Number1, out _))
+                        if (!double.TryParse(Number2, out _))
                         {
                             return "No that was not a double";
                         }

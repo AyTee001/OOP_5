@@ -14,7 +14,7 @@
         <TextBlock Margin="36,76,36,0" TextWrapping="Wrap" Text="This page is about arithmetic operators in C#. You can perform basic operations by entering two numbers and then choosing the operator and pressing 'Calculate' button. You will see the results in the output field" VerticalAlignment="Top" Height="64"/>
         <TextBlock HorizontalAlignment="Left" Margin="36,33,0,0" TextWrapping="Wrap" Text="Basic Operators" VerticalAlignment="Top" Height="34" Width="210" FontSize="22" FontWeight="Bold"/>
         <TextBox Text="{Binding Number1, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="170,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource ValidatingControl}"/>
-        <TextBox Text="{Binding Number2, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" Margin="486,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource ValidatingControl}"/>
+        <TextBox Text="{Binding Number2, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="486,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource ValidatingControl}"/>
         <ComboBox HorizontalAlignment="Center" Margin="0,155,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding OperatorOptions}" SelectedItem="{Binding ArithmeticOperator}"/>
         <Button Command="{Binding Calculate}" Content="Calculate" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Height="35" Width="120"/>
         <TextBlock Text="{Binding CalculationResults, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="366,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="188"/>
