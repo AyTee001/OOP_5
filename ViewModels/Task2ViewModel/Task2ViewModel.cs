@@ -21,7 +21,7 @@ namespace OOP_5.ViewModels
         public List<string> OperatorOptions { get; } = Enum.GetNames(typeof(AgeCategories)).ToList();
         public string? Age
         {
-            get => _age.ToString();
+            get => _age.HasValue ? _age.Value.ToString() : "";
             set
             {
                 if (!int.TryParse(value, out int val))

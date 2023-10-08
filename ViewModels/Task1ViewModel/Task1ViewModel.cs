@@ -34,7 +34,7 @@ namespace OOP_5.ViewModels
         }
         public string? Number1
         {
-            get => _number1.ToString();
+            get => _number1.HasValue ? _number1.Value.ToString() : "";
             set
             {
                 if (!double.TryParse(value, out double val))
@@ -50,7 +50,7 @@ namespace OOP_5.ViewModels
         }
         public string? Number2
         {
-            get => _number2.ToString();
+            get => _number2.HasValue ? _number2.Value.ToString() : "";
             set
             {
                 if (!double.TryParse(value, out double val))

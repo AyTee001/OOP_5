@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using OOP_5.ViewModels.Abstract;
-using System.ComponentModel;
 
 namespace OOP_5.ViewModels
 {
@@ -20,7 +19,7 @@ namespace OOP_5.ViewModels
 
         public string? Number
         {
-            get => _num.ToString();
+            get => _num.HasValue ? _num.Value.ToString() : "";
             set
             {
                 if (!double.TryParse(value, out double val))
