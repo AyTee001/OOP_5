@@ -26,7 +26,7 @@ namespace OOP_5.ViewModels
             get => _age.HasValue ? _age.Value.ToString() : "";
             set
             {
-                if (!int.TryParse(value, out int val))
+                if (!int.TryParse(value, out int val) || val < 1)
                 {
                     _age = null;
                 }
