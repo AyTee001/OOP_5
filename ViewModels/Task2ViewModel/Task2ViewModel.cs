@@ -12,6 +12,8 @@ namespace OOP_5.ViewModels
 {
     public partial class Task2ViewModel : ViewModelBase
     {
+        private bool _hasUserInteractedAge = false;
+
         private int? _age;
 
         private string? _category;
@@ -32,6 +34,7 @@ namespace OOP_5.ViewModels
                 {
                     _age = val;
                 }
+                _hasUserInteractedAge = true;
                 OnPropertyChanged(nameof(Age));
             }
         }

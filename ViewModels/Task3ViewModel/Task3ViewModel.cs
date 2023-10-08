@@ -11,6 +11,8 @@ namespace OOP_5.ViewModels
 {
     public partial class Task3ViewModel : ViewModelBase
     {
+        private bool _hasUserInteractedNumber = false;
+
         private double? _num;
 
         private ICollection<MultiplicationGridItem>? _tableData;
@@ -30,6 +32,7 @@ namespace OOP_5.ViewModels
                 {
                     _num = val;
                 }
+                _hasUserInteractedNumber = true;
                 OnPropertyChanged(nameof(Number));
             }
         }

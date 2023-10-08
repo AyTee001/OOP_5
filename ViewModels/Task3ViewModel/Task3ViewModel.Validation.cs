@@ -15,7 +15,7 @@ namespace OOP_5.ViewModels
             {
                 if (columnName == "Number")
                 {
-                    if (!double.TryParse(Number, out _))
+                    if (_hasUserInteractedNumber && !double.TryParse(Number, out _))
                     {
                         return "No that was not a valid number";
                     }

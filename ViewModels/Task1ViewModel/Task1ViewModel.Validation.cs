@@ -16,14 +16,14 @@ namespace OOP_5.ViewModels
                 switch (columnName)
                 {
                     case "Number1":
-                        if (!double.TryParse(Number1, out _))
+                        if (!double.TryParse(Number1, out _) && _hasUserInteractedNumber1)
                         {
                             return "No that was not a double";
                         }
                         break;
 
                     case "Number2":
-                        if (!double.TryParse(Number2, out _))
+                        if (!double.TryParse(Number2, out _) && _hasUserInteractedNumber2)
                         {
                             return "No that was not a double";
                         }

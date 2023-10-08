@@ -12,6 +12,9 @@ namespace OOP_5.ViewModels
 {
     public partial class Task1ViewModel : ViewModelBase
     {
+        private bool _hasUserInteractedNumber1 = false;
+
+        private bool _hasUserInteractedNumber2 = false;
         public ICommand Calculate { get; }
 
         private double? _number1;
@@ -45,6 +48,7 @@ namespace OOP_5.ViewModels
                 {
                     _number1 = val;
                 }
+                _hasUserInteractedNumber1 = true;
                 OnPropertyChanged(nameof(Number1));
             }
         }
@@ -61,6 +65,7 @@ namespace OOP_5.ViewModels
                 {
                     _number2 = val;
                 }
+                _hasUserInteractedNumber2 = true;
                 OnPropertyChanged(nameof(Number2));
             }
         }
