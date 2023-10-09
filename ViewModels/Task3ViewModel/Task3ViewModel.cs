@@ -13,25 +13,21 @@ namespace OOP_5.ViewModels
     {
         private bool _hasUserInteractedNumber = false;
 
-        private double? _num;
+        private string _num = "";
+
+        private bool CanExecute = false;
+
 
         private ICollection<MultiplicationGridItem>? _tableData;
 
         public ICommand CreateTable { get; }
 
-        public string? Number
+        public string Number
         {
-            get => _num.HasValue ? _num.Value.ToString() : "";
+            get => _num;
             set
             {
-                if (!double.TryParse(value, out double val))
-                {
-                    _num = null;
-                }
-                else
-                {
-                    _num = val;
-                }
+                _num = value;
                 _hasUserInteractedNumber = true;
                 OnPropertyChanged(nameof(Number));
             }
@@ -48,7 +44,10 @@ namespace OOP_5.ViewModels
 
         public Task3ViewModel() 
         {
-            CreateTable = new RelayCommand((param) => GenerateTable());
+            CreateTable = new RelayCommand(
+                    executeAction: (param) => GenerateTable(),
+                    canExecuteFunc: (param) => CanExecute
+                );
         }
 
         private void GenerateTable()
@@ -59,7 +58,7 @@ namespace OOP_5.ViewModels
             }
             try
             {
-                TableData = Task3Model.GenerateNultiplicationTableData((double)_num);
+                TableData = Task3Model.GenerateNultiplicationTableData(double.Parse(_num));
             }
             catch (Exception ex)
             {

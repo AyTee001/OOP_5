@@ -18,6 +18,7 @@ namespace OOP_5.ViewModels
                     case "Number1":
                         if (!double.TryParse(Number1, out _) && _hasUserInteractedNumber1)
                         {
+                            CanExecute = false;
                             return "No that was not a double";
                         }
                         break;
@@ -25,10 +26,12 @@ namespace OOP_5.ViewModels
                     case "Number2":
                         if (!double.TryParse(Number2, out _) && _hasUserInteractedNumber2)
                         {
+                            CanExecute = false;
                             return "No that was not a double";
                         }
                         break;
                 }
+                CanExecute = true && _hasUserInteractedNumber1 && _hasUserInteractedNumber2;
                 return null!;
             }
 

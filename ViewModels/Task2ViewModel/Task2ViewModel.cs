@@ -14,30 +14,25 @@ namespace OOP_5.ViewModels
     {
         private bool _hasUserInteractedAge = false;
 
-        private int? _age;
+        private string _age = "";
 
         private string? _category;
 
         public ICommand FindAgeCategory { get; }
 
         public List<string> OperatorOptions { get; } = Enum.GetNames(typeof(AgeCategories)).ToList();
-        public string? Age
+        public string Age
         {
-            get => _age.HasValue ? _age.Value.ToString() : "";
+            get => _age;
             set
             {
-                if (!int.TryParse(value, out int val) || val < 1)
-                {
-                    _age = null;
-                }
-                else
-                {
-                    _age = val;
-                }
+                _age = value;
                 _hasUserInteractedAge = true;
                 OnPropertyChanged(nameof(Age));
             }
         }
+        private bool CanExecute = false;
+
         public string? Category
         {
             get => _category;
@@ -49,17 +44,16 @@ namespace OOP_5.ViewModels
         }
         public Task2ViewModel()
         {
-            FindAgeCategory = new RelayCommand((param) => CalculateAgeCategory());
+            FindAgeCategory = new RelayCommand(
+                    executeAction: (param) => CalculateAgeCategory(),
+                    canExecuteFunc: (param) => CanExecute
+                );
         }
         private void CalculateAgeCategory()
         {
-            if (_age is null)
-            {
-                return;
-            }
             try
             {
-                var ageCat = Task2Model.DefineAge((int)_age);
+                var ageCat = Task2Model.DefineAge(int.Parse(_age));
                 Category = Enum.GetName(typeof(AgeCategories), ageCat); ;
             }
             catch (Exception ex)

@@ -17,13 +17,15 @@ namespace OOP_5.ViewModels
         private bool _hasUserInteractedNumber2 = false;
         public ICommand Calculate { get; }
 
-        private double? _number1;
+        private string _number1 = "";
 
-        private double? _number2;
+        private string _number2 = "";
 
         private ArithmeticOperators _arithmeticOperator;
 
         private string? _calculationResults;
+
+        private bool CanExecute = false;
 
         public List<string> OperatorOptions { get; } = Enum.GetNames(typeof(ArithmeticOperators)).ToList();
         public string? CalculationResults
@@ -35,36 +37,22 @@ namespace OOP_5.ViewModels
                 OnPropertyChanged(nameof(CalculationResults));
             }
         }
-        public string? Number1
+        public string Number1
         {
-            get => _number1.HasValue ? _number1.Value.ToString() : "";
+            get => _number1;
             set
             {
-                if (!double.TryParse(value, out double val))
-                {
-                    _number1 = null;
-                }
-                else
-                {
-                    _number1 = val;
-                }
+                _number1 = value;
                 _hasUserInteractedNumber1 = true;
                 OnPropertyChanged(nameof(Number1));
             }
         }
-        public string? Number2
+        public string Number2
         {
-            get => _number2.HasValue ? _number2.Value.ToString() : "";
+            get => _number2;
             set
             {
-                if (!double.TryParse(value, out double val))
-                {
-                    _number2 = null;
-                }
-                else
-                {
-                    _number2 = val;
-                }
+                _number2 = value;
                 _hasUserInteractedNumber2 = true;
                 OnPropertyChanged(nameof(Number2));
             }
@@ -85,7 +73,10 @@ namespace OOP_5.ViewModels
 
         public Task1ViewModel()
         {
-            Calculate = new RelayCommand((param) => ActionWithTwoNums());
+            Calculate = new RelayCommand(
+                    executeAction: (param) => ActionWithTwoNums(),
+                    canExecuteFunc: (param) => CanExecute
+                );
         }
 
 
@@ -98,7 +89,7 @@ namespace OOP_5.ViewModels
             double result;
             try
             {
-                result = Task1Model.ActionWithToNums((double)_number1, (double)_number2, _arithmeticOperator);
+                result = Task1Model.ActionWithToNums(double.Parse(_number1), double.Parse(_number2), _arithmeticOperator);
                 CalculationResults = result.ToString();
             }
             catch (Exception ex)

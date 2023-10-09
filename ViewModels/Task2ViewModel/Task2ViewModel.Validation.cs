@@ -16,9 +16,12 @@ namespace OOP_5.ViewModels
                 if (columnName == "Age")
                 {
                     if (_hasUserInteractedAge && (string.IsNullOrEmpty(Age) || !int.TryParse(Age, out int val) || val < 1 || val > 150))
+                    {
+                        CanExecute = false;
                         return "Age needs to be a positive integer between 1 and 150";
+                    }
                 }
-
+                CanExecute = true && _hasUserInteractedAge;
                 return null!;
             }
         }

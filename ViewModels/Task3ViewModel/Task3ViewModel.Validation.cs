@@ -17,10 +17,11 @@ namespace OOP_5.ViewModels
                 {
                     if (_hasUserInteractedNumber && !double.TryParse(Number, out _))
                     {
+                        CanExecute = false;
                         return "No that was not a valid number";
                     }
                 }
-
+                CanExecute = true && _hasUserInteractedNumber;
                 return null!;
             }
         }

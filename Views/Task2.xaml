@@ -14,7 +14,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" Text="Age Categorizer" VerticalAlignment="Top" Height="35" Width="220" FontSize="20" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,70,0,0" TextWrapping="Wrap" Text="Enter your age and the program will tell your age category" VerticalAlignment="Top" Height="56" Width="251"/>
-        <TextBox Text="{Binding Path=Age, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Margin="30,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource ValidatingControl}"/>
+        <TextBox Text="{Binding Path=Age, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="30,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource ValidatingControl}"/>
         <Button Command="{Binding FindAgeCategory}" Content="Find Category" HorizontalAlignment="Left" Margin="180,125,0,0" VerticalAlignment="Top" Width="101"/>
         <TextBlock Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="108,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="188" />
         <Label Content="Category:" HorizontalAlignment="Left" Margin="30,165,0,0" VerticalAlignment="Top" Width="70"/>
